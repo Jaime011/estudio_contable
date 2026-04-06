@@ -580,15 +580,17 @@
   <div class="section-tag">Escribinos</div>
   <h2 class="section-title">¿Lista para ordenar<br><em>tu contabilidad?</em></h2>
   <p class="section-desc">La primera consulta es gratis y sin compromiso. Contanos tu caso y te respondemos en menos de 24 horas.</p>
-  <div class="contact-form">
+  
+  <form action="https://formspree.io/f/xpqobwaa" method="POST" class="contact-form">
     <div class="form-row">
-      <input class="form-input" type="text" placeholder="Tu nombre">
-      <input class="form-input" type="email" placeholder="Tu email">
+      <input class="form-input" type="text" name="nombre" placeholder="Tu nombre" required>
+      <input class="form-input" type="email" name="email" placeholder="Tu email" required>
     </div>
-    <input class="form-input" type="tel" placeholder="WhatsApp (opcional)" style="margin-bottom:1rem;">
-    <textarea class="form-input form-textarea" placeholder="Contanos sobre tu negocio o consulta..."></textarea>
-    <button class="btn-white" onclick="alert('¡Gracias! Nos ponemos en contacto pronto.')">Enviar consulta →</button>
-  </div>
+    <input class="form-input" type="tel" name="whatsapp" placeholder="WhatsApp (opcional)" style="margin-bottom:1rem;">
+    <textarea class="form-input form-textarea" name="mensaje" placeholder="Contanos sobre tu negocio o consulta..." required></textarea>
+    
+    <button class="btn-white" type="submit">Enviar consulta →</button>
+  </form>
 </section>
 
 <!-- FOOTER -->
