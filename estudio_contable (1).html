@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Saavedra & Durán — Servicios Profesionales</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --mint-light: #E8F5F0;
+    --mint:       #A8D8C8;
+    --mint-mid:   #6BBFA6;
+    --mint-dark:  #3D9B84;
+    --navy:       #1A3A5C;
+    --navy-dark:  #102440;
+    --navy-mid:   #2A5080;
+    --cream:      #F7FAFA;
+    --white:      #FFFFFF;
+    --text-main:  #1A3A5C;
+    --text-muted: #5A7A90;
+    --text-light: #8AAABB;
+    --border:     rgba(26,58,92,0.1);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text-main);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.1rem 5vw;
+    background: rgba(247,250,250,0.94);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(168,216,200,0.3);
+  }
+  .logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem; color: var(--navy); font-weight: 600;
+    line-height: 1.1; display: flex; align-items: center; gap: 0.7rem;
+  }
+  .logo-icon {
+    width: 36px; height: 36px; background: var(--navy); border-radius: 10px;
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  }
+  .logo-text span {
+    display: block; font-family: 'DM Sans', sans-serif;
+    font-size: 0.6rem; font-weight: 500; color: var(--text-muted);
+    letter-spacing: 0.18em; text-transform: uppercase; margin-top: 1px;
+  }
+  .nav-links { display: flex; gap: 1.8rem; list-style: none; }
+  .nav-links a {
+    text-decoration: none; font-size: 0.84rem; font-weight: 500;
+    color: var(--text-muted); transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--navy); }
+  .nav-cta {
+    background: var(--navy) !important; color: white !important;
+    padding: 0.5rem 1.3rem !important; border-radius: 100px !important;
+  }
+  .nav-cta:hover { background: var(--navy-dark) !important; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr;
+    padding-top: 76px; position: relative; overflow: hidden; background: var(--cream);
+  }
+  .hero::after {
+    content: ''; position: absolute; top: 0; right: 0; width: 50%; height: 100%;
+    background: linear-gradient(160deg, rgba(168,216,200,0.18) 0%, rgba(107,191,166,0.08) 100%);
+    clip-path: polygon(8% 0, 100% 0, 100% 100%, 0% 100%); pointer-events: none;
+  }
+  .hero-left {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 5vh 4vw 5vh 8vw; position: relative; z-index: 1;
+  }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: rgba(26,58,92,0.07); color: var(--navy);
+    font-size: 0.73rem; font-weight: 500; letter-spacing: 0.1em;
+    text-transform: uppercase; padding: 0.4rem 1rem; border-radius: 100px;
+    margin-bottom: 1.8rem; width: fit-content; border: 1px solid rgba(26,58,92,0.12);
+  }
+  .hero-tag::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--mint-dark); }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.4rem, 3.8vw, 3.5rem);
+    line-height: 1.12; color: var(--navy); margin-bottom: 1.4rem; font-weight: 600;
+  }
+  h1 em { font-style: italic; color: var(--mint-dark); }
+
+  .hero-desc {
+    font-size: 1.02rem; line-height: 1.75; color: var(--text-muted);
+    max-width: 400px; margin-bottom: 2.4rem; font-weight: 300;
+  }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--navy); color: white; text-decoration: none;
+    padding: 0.85rem 1.9rem; border-radius: 100px; font-size: 0.88rem; font-weight: 500;
+    transition: all 0.25s ease; display: inline-flex; align-items: center; gap: 0.5rem;
+  }
+  .btn-primary:hover { background: var(--navy-dark); transform: translateY(-1px); box-shadow: 0 8px 24px rgba(26,58,92,0.22); }
+  .btn-secondary {
+    color: var(--navy); text-decoration: none; padding: 0.85rem 1.5rem;
+    border-radius: 100px; font-size: 0.88rem; font-weight: 500;
+    border: 1.5px solid rgba(26,58,92,0.2); transition: all 0.25s ease;
+    display: inline-flex; align-items: center; gap: 0.5rem;
+  }
+  .btn-secondary:hover { border-color: var(--mint-dark); color: var(--mint-dark); background: rgba(107,191,166,0.06); }
+
+  .hero-stats {
+    display: flex; gap: 2.5rem; margin-top: 3.2rem;
+    padding-top: 2rem; border-top: 1px solid var(--border);
+  }
+  .stat-num { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 600; color: var(--navy); }
+  .stat-label { font-size: 0.77rem; color: var(--text-light); margin-top: 0.1rem; line-height: 1.4; }
+
+  .hero-right {
+    display: flex; align-items: center; justify-content: center;
+    padding: 3rem 5vw; position: relative; z-index: 1;
+  }
+  .hero-visual { position: relative; width: 100%; max-width: 440px; }
+  .hero-card-main {
+    background: white; border-radius: 24px; padding: 2.2rem;
+    box-shadow: 0 4px 40px rgba(26,58,92,0.1); position: relative; z-index: 2;
+    border: 1px solid rgba(168,216,200,0.4);
+  }
+  .card-header-label { font-size: 0.71rem; color: var(--text-light); letter-spacing: 0.08em; text-transform: uppercase; font-weight: 500; margin-bottom: 1.1rem; }
+  .balance-number { font-family: 'Playfair Display', serif; font-size: 2.3rem; color: var(--navy); font-weight: 600; margin-bottom: 0.3rem; }
+  .balance-change { display: inline-flex; align-items: center; gap: 0.3rem; font-size: 0.78rem; color: var(--mint-dark); font-weight: 500; background: rgba(61,155,132,0.1); padding: 0.25rem 0.7rem; border-radius: 100px; }
+  .mini-chart { margin: 1.4rem 0; height: 58px; display: flex; align-items: flex-end; gap: 5px; }
+  .bar { flex: 1; border-radius: 4px 4px 0 0; }
+  .card-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 1.1rem; }
+  .tag { font-size: 0.71rem; padding: 0.28rem 0.75rem; border-radius: 100px; font-weight: 500; }
+  .tag-navy  { background: rgba(26,58,92,0.08);  color: var(--navy); }
+  .tag-mint  { background: rgba(61,155,132,0.1); color: var(--mint-dark); }
+  .tag-light { background: rgba(168,216,200,0.3); color: #2A7060; }
+
+  .floating-badge { position: absolute; border-radius: 16px; padding: 0.9rem 1.2rem; font-size: 0.78rem; z-index: 3; }
+  .floating-badge.top-right {
+    top: -1.4rem; right: -1.4rem; background: var(--navy); color: white;
+    text-align: center; box-shadow: 0 8px 20px rgba(26,58,92,0.3);
+  }
+  .floating-badge.top-right strong { display: block; font-size: 1.3rem; font-family: 'Playfair Display', serif; line-height: 1; margin-bottom: 0.2rem; }
+  .floating-badge.bottom-left {
+    bottom: -1.1rem; left: -1.4rem; background: white; color: var(--text-main);
+    border: 1px solid rgba(168,216,200,0.5); box-shadow: 0 4px 16px rgba(26,58,92,0.08);
+    display: flex; align-items: center; gap: 0.7rem;
+  }
+  .avatar-row { display: flex; }
+  .avatar {
+    width: 28px; height: 28px; border-radius: 50%; border: 2px solid white;
+    margin-left: -8px; font-size: 0.62rem; display: flex; align-items: center;
+    justify-content: center; font-weight: 600; color: white;
+  }
+  .avatar:first-child { margin-left: 0; }
+
+  /* SECTION COMMON */
+  section { padding: 6rem 8vw; }
+  .section-tag { font-size: 0.71rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mint-dark); margin-bottom: 0.7rem; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.9rem, 2.8vw, 2.7rem); line-height: 1.2; color: var(--navy); font-weight: 600; max-width: 540px; margin-bottom: 1.1rem; }
+  .section-title em { font-style: italic; color: var(--mint-dark); }
+  .section-desc { font-size: 0.98rem; color: var(--text-muted); line-height: 1.75; max-width: 480px; font-weight: 300; }
+
+  /* SERVICIOS */
+  #servicios { background: white; }
+  .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 1.4rem; margin-top: 3.5rem; }
+  .service-card {
+    background: var(--cream); border-radius: 20px; padding: 1.9rem;
+    border: 1px solid rgba(168,216,200,0.35); transition: all 0.3s ease;
+    position: relative; overflow: hidden;
+  }
+  .service-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: var(--mint-dark); transform: scaleX(0); transform-origin: left; transition: transform 0.3s ease;
+  }
+  .service-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(26,58,92,0.08); }
+  .service-card:hover::before { transform: scaleX(1); }
+  .service-icon { width: 46px; height: 46px; border-radius: 13px; background: rgba(168,216,200,0.25); display: flex; align-items: center; justify-content: center; font-size: 1.35rem; margin-bottom: 1.1rem; }
+  .service-card h3 { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 600; color: var(--navy); margin-bottom: 0.6rem; }
+  .service-card p { font-size: 0.86rem; color: var(--text-muted); line-height: 1.7; font-weight: 300; }
+  .service-link { display: inline-flex; align-items: center; gap: 0.4rem; margin-top: 1.1rem; font-size: 0.82rem; font-weight: 500; color: var(--mint-dark); text-decoration: none; transition: gap 0.2s; }
+  .service-link:hover { gap: 0.7rem; }
+
+  /* NOSOTRAS */
+  #nosotras { background: var(--navy); color: white; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+  #nosotras .section-title { color: white; max-width: 100%; }
+  #nosotras .section-tag { color: var(--mint); }
+  .values-list { list-style: none; margin-top: 2rem; display: flex; flex-direction: column; gap: 1rem; }
+  .values-list li { display: flex; align-items: flex-start; gap: 1rem; font-size: 0.88rem; color: rgba(255,255,255,0.75); line-height: 1.6; }
+  .value-dot { width: 22px; height: 22px; border-radius: 50%; background: rgba(168,216,200,0.15); border: 1.5px solid var(--mint); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 0.1rem; }
+  .value-dot::after { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--mint); }
+
+  .team-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+  .team-card {
+    background: rgba(255,255,255,0.05); border: 1px solid rgba(168,216,200,0.2);
+    border-radius: 24px; padding: 2rem 1.5rem; text-align: center; transition: all 0.3s ease;
+  }
+  .team-card:hover { background: rgba(168,216,200,0.08); border-color: rgba(168,216,200,0.4); transform: translateY(-3px); }
+
+  .team-photo-wrap { width: 100px; height: 100px; border-radius: 50%; margin: 0 auto 1.1rem; position: relative; }
+  .team-photo-wrap::before {
+    content: ''; position: absolute; inset: -3px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--mint), var(--navy-mid)); z-index: 0;
+  }
+  .team-photo-inner {
+    position: relative; z-index: 1; width: 100%; height: 100%; border-radius: 50%;
+    overflow: hidden; background: var(--navy-mid); display: flex; align-items: center;
+    justify-content: center; border: 3px solid var(--navy);
+  }
+  .team-photo-inner img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+  .team-photo-inner .initials { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 600; color: var(--mint); }
+
+  .team-card h4 { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: white; margin-bottom: 0.35rem; font-weight: 600; }
+  .team-card .team-role { font-size: 0.76rem; color: rgba(168,216,200,0.8); line-height: 1.55; font-weight: 300; }
+  .team-card .team-badge { display: inline-block; margin-top: 0.8rem; font-size: 0.68rem; font-weight: 500; letter-spacing: 0.06em; color: var(--mint); background: rgba(168,216,200,0.12); padding: 0.25rem 0.7rem; border-radius: 100px; border: 1px solid rgba(168,216,200,0.2); }
+
+  /* PROCESO */
+  #proceso { background: var(--mint-light); }
+  .proceso-header { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: end; margin-bottom: 4rem; }
+  .steps-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; position: relative; }
+  .steps-grid::before { content: ''; position: absolute; top: 27px; left: 10%; right: 10%; height: 1px; background: repeating-linear-gradient(90deg, var(--mint-dark) 0, var(--mint-dark) 6px, transparent 6px, transparent 14px); opacity: 0.4; }
+  .step-card { text-align: center; position: relative; z-index: 1; }
+  .step-number { width: 54px; height: 54px; border-radius: 50%; background: white; border: 2px solid var(--mint-dark); display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 600; color: var(--mint-dark); margin: 0 auto 1.1rem; transition: all 0.3s ease; }
+  .step-card:hover .step-number { background: var(--mint-dark); color: white; }
+  .step-card h4 { font-family: 'Playfair Display', serif; font-size: 0.98rem; color: var(--navy); margin-bottom: 0.5rem; font-weight: 600; }
+  .step-card p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.6; font-weight: 300; }
+
+  /* TESTIMONIOS */
+  #testimonios { background: white; }
+  .testimonios-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: end; margin-bottom: 3.5rem; }
+  .testimonios-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; }
+  .testimonio-card { background: var(--cream); border-radius: 20px; padding: 1.7rem; border: 1px solid rgba(168,216,200,0.3); }
+  .quote-mark { font-family: 'Playfair Display', serif; font-size: 2.8rem; color: var(--mint-dark); opacity: 0.3; line-height: 1; margin-bottom: -0.4rem; }
+  .testimonio-text { font-size: 0.88rem; color: var(--text-muted); line-height: 1.75; margin-bottom: 1.2rem; font-weight: 300; font-style: italic; }
+  .stars { color: var(--mint-dark); font-size: 0.73rem; margin-bottom: 0.3rem; }
+  .testimonio-author { display: flex; align-items: center; gap: 0.8rem; }
+  .author-avatar { width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.72rem; font-weight: 600; color: white; flex-shrink: 0; }
+  .author-name { font-size: 0.81rem; font-weight: 500; color: var(--navy); }
+  .author-role { font-size: 0.7rem; color: var(--text-light); }
+
+  /* CONTACTO */
+  #contacto { background: linear-gradient(135deg, var(--navy) 0%, var(--navy-dark) 100%); color: white; text-align: center; padding: 7rem 8vw; position: relative; overflow: hidden; }
+  #contacto::before { content: ''; position: absolute; top: -30%; left: 50%; transform: translateX(-50%); width: 600px; height: 600px; border-radius: 50%; background: rgba(168,216,200,0.06); pointer-events: none; }
+  #contacto .section-tag { color: var(--mint); }
+  #contacto .section-title { color: white; max-width: 100%; margin: 0 auto 1rem; }
+  #contacto .section-desc { color: rgba(255,255,255,0.65); max-width: 460px; margin: 0 auto 2.4rem; }
+  .contact-form { max-width: 480px; margin: 0 auto; position: relative; z-index: 1; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+  .form-input { width: 100%; padding: 0.85rem 1.15rem; border-radius: 12px; border: 1.5px solid rgba(168,216,200,0.2); background: rgba(255,255,255,0.08); color: white; font-family: 'DM Sans', sans-serif; font-size: 0.88rem; outline: none; transition: border-color 0.2s; }
+  .form-input::placeholder { color: rgba(255,255,255,0.4); }
+  .form-input:focus { border-color: rgba(168,216,200,0.5); }
+  .form-textarea { min-height: 95px; resize: vertical; margin-bottom: 1rem; }
+  .btn-white { background: white; color: var(--navy); border: none; padding: 0.95rem 2.4rem; border-radius: 100px; font-family: 'DM Sans', sans-serif; font-size: 0.92rem; font-weight: 500; cursor: pointer; transition: all 0.25s ease; display: inline-flex; align-items: center; gap: 0.5rem; }
+  .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
+
+  /* FOOTER */
+  footer { background: var(--navy-dark); color: rgba(168,216,200,0.5); padding: 2.5rem 8vw; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+  .footer-logo { font-family: 'Playfair Display', serif; font-size: 1.05rem; color: white; font-weight: 600; }
+  .footer-text { font-size: 0.78rem; }
+  .footer-links { display: flex; gap: 1.5rem; }
+  .footer-links a { font-size: 0.78rem; color: rgba(168,216,200,0.5); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--mint); }
+
+  /* WHATSAPP */
+  .whatsapp-float { position: fixed; bottom: 2rem; right: 2rem; z-index: 200; background: #25D366; color: white; width: 52px; height: 52px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; box-shadow: 0 4px 16px rgba(37,211,102,0.4); transition: transform 0.2s, box-shadow 0.2s; }
+  .whatsapp-float:hover { transform: scale(1.08); box-shadow: 0 8px 24px rgba(37,211,102,0.5); }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
+  .fade-up { animation: fadeUp 0.6s ease forwards; }
+  .delay-1 { animation-delay: 0.1s; }
+  .delay-2 { animation-delay: 0.2s; }
+  .delay-3 { animation-delay: 0.3s; }
+  .delay-4 { animation-delay: 0.4s; }
+  @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+  .floating { animation: float 4s ease-in-out infinite; }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-right { display: none; }
+    #nosotras { grid-template-columns: 1fr; }
+    .steps-grid { grid-template-columns: 1fr 1fr; }
+    .testimonios-grid { grid-template-columns: 1fr; }
+    .proceso-header, .testimonios-intro { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 600px) {
+    section { padding: 4rem 5vw; }
+    .steps-grid { grid-template-columns: 1fr; }
+    .steps-grid::before { display: none; }
+    .team-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">
+    <div class="logo-icon">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M5 8C5 6.34 6.34 5 8 5h2c1.66 0 3 1.34 3 3s-1.34 3-3 3H8C6.34 11 5 12.34 5 14s1.34 3 3 3h3" stroke="#A8D8C8" stroke-width="2" stroke-linecap="round"/>
+        <path d="M14 7h3c1.66 0 3 1.34 3 3v4c0 1.66-1.34 3-3 3h-3" stroke="white" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="logo-text">
+      Saavedra &amp; Durán
+      <span>Servicios Profesionales</span>
+    </div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#nosotras">Nosotras</a></li>
+    <li><a href="#proceso">Proceso</a></li>
+    <li><a href="#testimonios">Testimonios</a></li>
+    <li><a href="#contacto" class="nav-cta">Consultá gratis</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-tag fade-up">Contadoras al Rescate</div>
+    <h1 class="fade-up delay-1">
+      Tu negocio,<br>
+      <em>en las mejores manos</em>
+    </h1>
+    <p class="hero-desc fade-up delay-2">
+      Somos Vanina y Ayelen — contadoras que te acompañan con claridad, empatía y experiencia real. Sin letra chica, sin vueltas: solo soluciones que funcionan.
+    </p>
+    <div class="hero-btns fade-up delay-3">
+      <a href="#contacto" class="btn-primary">Quiero una consulta ↗</a>
+      <a href="#servicios" class="btn-secondary">Ver servicios</a>
+    </div>
+    <div class="hero-stats fade-up delay-4">
+      <div>
+        <div class="stat-num">+200</div>
+        <div class="stat-label">clientes<br>activos</div>
+      </div>
+      <div>
+        <div class="stat-num">8+</div>
+        <div class="stat-label">años de<br>experiencia</div>
+      </div>
+      <div>
+        <div class="stat-num">98%</div>
+        <div class="stat-label">clientes<br>satisfechos</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-visual floating">
+      <div class="floating-badge top-right">
+        <strong>+32%</strong>
+        ahorro fiscal
+      </div>
+      <div class="hero-card-main">
+        <div class="card-header-label">Resumen Anual 2024</div>
+        <div class="balance-number">$4.280.000</div>
+        <div class="balance-change">▲ 18.4% vs año anterior</div>
+        <div class="mini-chart">
+          <div class="bar" style="height:35%; background:#D0ECE6;"></div>
+          <div class="bar" style="height:50%; background:#B0D8CE;"></div>
+          <div class="bar" style="height:45%; background:#D0ECE6;"></div>
+          <div class="bar" style="height:65%; background:#B0D8CE;"></div>
+          <div class="bar" style="height:60%; background:#D0ECE6;"></div>
+          <div class="bar" style="height:80%; background:#6BBFA6;"></div>
+          <div class="bar" style="height:70%; background:#D0ECE6;"></div>
+          <div class="bar" style="height:90%; background:#3D9B84;"></div>
+          <div class="bar" style="height:85%; background:#D0ECE6;"></div>
+          <div class="bar" style="height:95%; background:#3D9B84;"></div>
+          <div class="bar" style="height:88%; background:#D0ECE6;"></div>
+          <div class="bar" style="height:100%; background:#1A3A5C;"></div>
+        </div>
+        <div class="card-tags">
+          <span class="tag tag-navy">AFIP al día</span>
+          <span class="tag tag-mint">Sin multas</span>
+          <span class="tag tag-light">Optimizado</span>
+        </div>
+      </div>
+      <div class="floating-badge bottom-left">
+        <div class="avatar-row">
+          <div class="avatar" style="background: var(--navy);">V</div>
+          <div class="avatar" style="background: var(--mint-dark);">A</div>
+        </div>
+        <div style="font-size:0.77rem; color:var(--text-muted); line-height:1.4;">
+          <strong style="display:block; font-size:0.84rem; color:var(--navy);">Equipo disponible</strong>
+          Respondemos en 24hs
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section id="servicios">
+  <div class="section-tag">Lo que hacemos</div>
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:2rem; align-items:end; margin-bottom:0.5rem;">
+    <h2 class="section-title">Servicios pensados <em>para vos</em></h2>
+    <p class="section-desc">Cada emprendedor es único. Por eso ofrecemos soluciones contables adaptadas a tu realidad, tamaño y objetivos.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">📋</div>
+      <h3>Liquidación de Impuestos</h3>
+      <p>Ganancias, IVA, Ingresos Brutos y más. Presentamos todo en tiempo y forma para que no tengas sorpresas con AFIP.</p>
+      <a href="#contacto" class="service-link">Consultar →</a>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🔍</div>
+      <h3>Auditoría Externa</h3>
+      <p>Revisión independiente de estados financieros con rigor profesional. Especialidad de Vanina Durán.</p>
+      <a href="#contacto" class="service-link">Consultar →</a>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📊</div>
+      <h3>Control de Gestión</h3>
+      <p>Información clara y oportuna para que tomes mejores decisiones. Balances, reportes y análisis de tu negocio.</p>
+      <a href="#contacto" class="service-link">Consultar →</a>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">💼</div>
+      <h3>Área Laboral</h3>
+      <p>Sueldos, altas y bajas en AFIP, convenios colectivos y todo lo que necesitás para mantener tu equipo en regla.</p>
+      <a href="#contacto" class="service-link">Consultar →</a>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🏢</div>
+      <h3>Área Societaria</h3>
+      <p>Constitución de SRL, SA o cualquier figura jurídica. Estatutos, trámites y asesoramiento integral para tu empresa.</p>
+      <a href="#contacto" class="service-link">Consultar →</a>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">✨</div>
+      <h3>Emprendedores</h3>
+      <p>¿Recién arrancás? Te guiamos desde el principio: Monotributo, inscripciones y primeros pasos sin miedo al fisco.</p>
+      <a href="#contacto" class="service-link">Consultar →</a>
+    </div>
+  </div>
+</section>
+
+<!-- NOSOTRAS -->
+<section id="nosotras">
+  <div>
+    <div class="section-tag">Quiénes somos</div>
+    <h2 class="section-title">Contadoras que <em>te hablan claro</em></h2>
+    <p class="section-desc" style="color:rgba(255,255,255,0.6); margin-top:1rem;">
+      Somos Vanina y Ayelen, dos contadoras apasionadas por ayudar a emprendedores y empresas a ordenar sus finanzas y crecer con seguridad.
+    </p>
+    <ul class="values-list">
+      <li><div class="value-dot"></div>Claridad ante todo: explicamos todo en lenguaje simple, sin tecnicismos.</li>
+      <li><div class="value-dot"></div>Respuesta rápida: sabemos que tu tiempo vale, respondemos en menos de 24 horas.</li>
+      <li><div class="value-dot"></div>Compromiso real: tu tranquilidad contable es nuestra responsabilidad.</li>
+      <li><div class="value-dot"></div>Actualización permanente: al día con todas las normativas vigentes.</li>
+    </ul>
+  </div>
+
+  <div class="team-grid">
+    <!-- VANINA — reemplazá el comentario con: <img src="URL_DE_LA_FOTO" alt="Vanina Durán"> -->
+    <div class="team-card">
+      <div class="team-photo-wrap">
+        <div class="team-photo-inner" id="foto-vanina">
+          <span class="initials">VD</span>
+        </div>
+      </div>
+      <h4>Vanina Durán</h4>
+      <p class="team-role">Especialista en Auditoría Externa,<br>Control de Gestión y Contabilidad</p>
+      <span class="team-badge">Contadora Pública</span>
+    </div>
+
+    <!-- AYELEN — reemplazá el comentario con: <img src="URL_DE_LA_FOTO" alt="Ayelen Saavedra"> -->
+    <div class="team-card">
+      <div class="team-photo-wrap">
+        <div class="team-photo-inner" id="foto-ayelen">
+          <span class="initials">AS</span>
+        </div>
+      </div>
+      <h4>Ayelen Saavedra</h4>
+      <p class="team-role">Contadora Pública, encargada del<br>área laboral, impositivo y societario</p>
+      <span class="team-badge">Contadora Pública</span>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESO -->
+<section id="proceso">
+  <div class="proceso-header">
+    <div>
+      <div class="section-tag">Cómo trabajamos</div>
+      <h2 class="section-title">Simple, claro y <em>sin vueltas</em></h2>
+    </div>
+    <p class="section-desc">Nuestro proceso está diseñado para que te sientas acompañada en cada paso, sin sorpresas ni trámites confusos.</p>
+  </div>
+  <div class="steps-grid">
+    <div class="step-card">
+      <div class="step-number">01</div>
+      <h4>Consulta inicial</h4>
+      <p>Nos contás tu situación actual, tus dudas y objetivos. Sin costo y sin compromiso.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-number">02</div>
+      <h4>Diagnóstico</h4>
+      <p>Analizamos tu caso y te presentamos un plan claro con lo que necesitás resolver primero.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-number">03</div>
+      <h4>Ejecución</h4>
+      <p>Nos encargamos de todo con comunicación constante. Vos te enfocás en tu negocio.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-number">04</div>
+      <h4>Seguimiento</h4>
+      <p>Te acompañamos de forma continua para que siempre estés al día y sin sorpresas.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIOS -->
+<section id="testimonios">
+  <div class="testimonios-intro">
+    <div>
+      <div class="section-tag">Lo que dicen</div>
+      <h2 class="section-title">Clientes que <em>nos eligen</em></h2>
+    </div>
+    <p class="section-desc">Nada dice más de nuestro trabajo que las palabras de quienes confían en nosotras día a día.</p>
+  </div>
+  <div class="testimonios-grid">
+    <div class="testimonio-card">
+      <div class="stars">★★★★★</div>
+      <div class="quote-mark">"</div>
+      <p class="testimonio-text">Por fin encontré un estudio contable que me habla en mi idioma. Entiendo todo lo que hacen y eso me da una tranquilidad enorme.</p>
+      <div class="testimonio-author">
+        <div class="author-avatar" style="background:var(--navy);">A</div>
+        <div>
+          <div class="author-name">Ana Paula Villanueva</div>
+          <div class="author-role">Dueña de tienda online · Mendoza</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonio-card">
+      <div class="stars">★★★★★</div>
+      <div class="quote-mark">"</div>
+      <p class="testimonio-text">Empecé mi emprendimiento con su ayuda y me guiaron en todo. Hoy tengo mi empresa constituida y funcionando sin problemas con AFIP.</p>
+      <div class="testimonio-author">
+        <div class="author-avatar" style="background:var(--mint-dark);">R</div>
+        <div>
+          <div class="author-name">Rocío Fernández</div>
+          <div class="author-role">Diseñadora freelance · Buenos Aires</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonio-card">
+      <div class="stars">★★★★★</div>
+      <div class="quote-mark">"</div>
+      <p class="testimonio-text">Responden siempre rápido, son muy organizadas y me ayudaron a ahorrar impuestos de manera legal. Las recomiendo sin dudar.</p>
+      <div class="testimonio-author">
+        <div class="author-avatar" style="background:var(--navy-mid);">C</div>
+        <div>
+          <div class="author-name">Carolina Méndez</div>
+          <div class="author-role">Consultora de RRHH · Córdoba</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto">
+  <div class="section-tag">Escribinos</div>
+  <h2 class="section-title">¿Lista para ordenar<br><em>tu contabilidad?</em></h2>
+  <p class="section-desc">La primera consulta es gratis y sin compromiso. Contanos tu caso y te respondemos en menos de 24 horas.</p>
+  <div class="contact-form">
+    <div class="form-row">
+      <input class="form-input" type="text" placeholder="Tu nombre">
+      <input class="form-input" type="email" placeholder="Tu email">
+    </div>
+    <input class="form-input" type="tel" placeholder="WhatsApp (opcional)" style="margin-bottom:1rem;">
+    <textarea class="form-input form-textarea" placeholder="Contanos sobre tu negocio o consulta..."></textarea>
+    <button class="btn-white" onclick="alert('¡Gracias! Nos ponemos en contacto pronto.')">Enviar consulta →</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Saavedra &amp; Durán</div>
+  <div class="footer-text">© 2025 · Servicios Profesionales · Mendoza, Argentina</div>
+  <div class="footer-links">
+    <a href="#servicios">Servicios</a>
+    <a href="#nosotras">Nosotras</a>
+    <a href="#contacto">Contacto</a>
+    <a href="mailto:info@saavedrayduran.com">Email</a>
+  </div>
+</footer>
+
+<!-- WHATSAPP -->
+<a href="https://wa.me/5492614000000" class="whatsapp-float" target="_blank" title="Escribinos por WhatsApp">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+</body>
+</html>
